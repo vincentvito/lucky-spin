@@ -18,6 +18,7 @@ import {
   Edit,
   Mail,
   FileImage,
+  Send,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -170,6 +171,12 @@ export default async function CampaignDetailPage({
           <Link href={`/campaigns/${campaignId}/board`}>
             <FileImage className="mr-2 h-4 w-4" />
             Printable Board
+          </Link>
+        </Button>
+        <Button variant="outline" asChild>
+          <Link href={`/campaigns/${campaignId}/broadcast`}>
+            <Send className="mr-2 h-4 w-4" />
+            Send Broadcast
           </Link>
         </Button>
       </div>

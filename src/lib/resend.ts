@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 export const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM_EMAIL = "LuckyQR <noreply@luckyqr.io>";
+const FROM_EMAIL = "LuckyQR <noreply@getcontacts.app>";
 
 export async function sendPrizeEmail({
   email,
