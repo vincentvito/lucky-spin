@@ -30,7 +30,7 @@ interface Campaign {
 
 type PlayState = "loading" | "email_input" | "spinning" | "result" | "already_played" | "error";
 
-const NO_WIN_COLOR = "#6B7280";
+const NO_WIN_COLOR = "#312647";
 
 function buildSegments(prizes: Prize[], wheelBaseColor: string | null): WheelSegment[] {
   const segments: WheelSegment[] = [];
@@ -205,7 +205,7 @@ export default function PlayPage() {
             className="mb-4 h-16 w-auto object-contain"
           />
         )}
-        <Gift className="mb-4 h-12 w-12 text-yellow-400" />
+        <Gift className="mb-4 h-12 w-12 text-purple-300" />
         <h1 className="text-2xl font-bold text-white">
           You Already Played!
         </h1>
@@ -270,7 +270,7 @@ export default function PlayPage() {
               className="h-12 w-full text-lg"
               disabled={submitting}
               style={{
-                backgroundColor: campaign?.board_accent_color || "#FF6B00",
+                backgroundColor: campaign?.board_accent_color || "#7C3AED",
               }}
             >
               {submitting ? "Spinning..." : "Spin the Wheel!"}
@@ -281,7 +281,7 @@ export default function PlayPage() {
 
       {/* Spinning state */}
       {state === "spinning" && (
-        <p className="animate-pulse text-center text-lg text-yellow-400">
+        <p className="animate-pulse text-center text-lg text-purple-300">
           Good luck!
         </p>
       )}
@@ -291,8 +291,8 @@ export default function PlayPage() {
         <div className="w-full max-w-sm text-center">
           {won ? (
             <>
-              <PartyPopper className="mx-auto mb-3 h-12 w-12 text-yellow-400" />
-              <h2 className="text-3xl font-bold text-yellow-400">
+              <PartyPopper className="mx-auto mb-3 h-12 w-12 text-purple-300" />
+              <h2 className="text-3xl font-bold text-purple-300">
                 You Won!
               </h2>
               <p className="mt-2 text-xl text-white">{prizeName}</p>

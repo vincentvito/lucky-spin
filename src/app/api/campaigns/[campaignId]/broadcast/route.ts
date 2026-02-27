@@ -74,7 +74,7 @@ export async function POST(
       const batch = emails.slice(i, i + BATCH_SIZE);
       const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://getcontacts.app";
       const messages = batch.map((to) => ({
-        from: "LuckyQR <noreply@getcontacts.app>",
+        from: "GetContactsApp <noreply@getcontacts.app>",
         to,
         subject,
         html: broadcastHtml({
@@ -123,7 +123,7 @@ function broadcastHtml({
           <div style="font-size:15px;line-height:1.6;color:#18181b">${body}</div>
         </td></tr>
         <tr><td style="padding:0 32px 24px;text-align:center">
-          <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by GetContactsApp</p>
           <p style="margin:0"><a href="${unsubscribeUrl}" style="color:#a1a1aa;font-size:11px;text-decoration:underline">Unsubscribe</a></p>
         </td></tr>
       </table>

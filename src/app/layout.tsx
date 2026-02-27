@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LuckyQR - Collect Emails with Spin-to-Win Campaigns",
+  title: "GetContactsApp - Collect Emails with Spin-to-Win Campaigns",
   description:
     "Generate QR codes for your cafe or restaurant. Customers scan, enter their email, and spin a wheel for a chance to win prizes.",
 };

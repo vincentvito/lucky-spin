@@ -23,7 +23,7 @@ export default async function HomePage() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           <div className="flex items-center gap-2 font-bold text-xl">
             <Gift className="h-6 w-6 text-primary" />
-            LuckyQR
+            GetContactsApp
           </div>
           <div className="flex items-center gap-3">
             <Button variant="ghost" asChild>
@@ -74,7 +74,7 @@ export default async function HomePage() {
 
       {/* Footer */}
       <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        <p>LuckyQR — Grow your mailing list with gamified QR campaigns.</p>
+        <p>GetContactsApp — Grow your mailing list with gamified QR campaigns.</p>
       </footer>
     </div>
   );

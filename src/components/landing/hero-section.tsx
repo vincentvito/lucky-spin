@@ -17,7 +17,7 @@ const HERO_PRIZES = [
   { name: "VIP Access" },
 ];
 
-const HERO_BASE_COLOR = "#2563EB";
+const HERO_BASE_COLOR = "#7C3AED";
 
 const STICKERS = [
   { text: "Increase Sales", className: "-top-3 -right-6 rotate-6", delay: "0s" },

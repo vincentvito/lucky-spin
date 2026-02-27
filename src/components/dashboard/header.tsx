@@ -43,7 +43,7 @@ export function Header({ email }: { email?: string }) {
         <SheetContent side="left" className="w-64 p-0">
           <div className="flex h-16 items-center gap-2 border-b px-6 font-bold text-lg">
             <Gift className="h-5 w-5 text-primary" />
-            LuckyQR
+            GetContactsApp
           </div>
           <nav className="space-y-1 p-4">
             {navItems.map((item) => {
