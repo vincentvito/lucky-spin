@@ -2,13 +2,22 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // During build-time prerendering, env vars may be unavailable.
+  // Allow the request through without auth checks.
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return NextResponse.next({ request });
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -46,7 +55,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Redirect authenticated users away from auth pages and landing page
-  const authPaths = ["/login", "/signup"];
+  const authPaths = ["/login", "/signup", "/forgot-password", "/auth/reset-password"];
   const isAuthPage = authPaths.includes(request.nextUrl.pathname);
   const isLandingPage = request.nextUrl.pathname === "/";
 
@@ -67,5 +76,7 @@ export const config = {
     "/settings/:path*",
     "/login",
     "/signup",
+    "/forgot-password",
+    "/auth/reset-password",
   ],
 };

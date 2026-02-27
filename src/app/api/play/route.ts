@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { determineLotteryOutcome } from "@/lib/lottery";
+import { sendPrizeEmail } from "@/lib/resend";
 import { playSchema } from "@/lib/validators";
 import { NextResponse } from "next/server";
 
@@ -23,7 +24,7 @@ export async function POST(request: Request) {
     // 1. Get campaign
     const { data: campaign } = await supabase
       .from("campaigns")
-      .select("id, is_active")
+      .select("id, name, is_active")
       .eq("slug", campaignSlug)
       .eq("is_active", true)
       .single();
@@ -100,6 +101,14 @@ export async function POST(request: Request) {
         prize_id_input: result.prizeId,
       });
     }
+
+    // 7. Send prize notification email (fire-and-forget)
+    sendPrizeEmail({
+      email: normalizedEmail,
+      won: result.won,
+      prizeName: result.prizeName,
+      campaignName: campaign.name,
+    }).catch(console.error);
 
     return NextResponse.json({
       won: result.won,

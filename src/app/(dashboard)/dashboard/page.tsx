@@ -12,6 +12,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Megaphone, Users, Trophy, Plus } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   const supabase = await createClient();
   const {

@@ -4,6 +4,8 @@ import { CampaignForm } from "@/components/campaigns/campaign-form";
 import { updateCampaign } from "../../actions";
 import type { CampaignWithPrizes } from "@/types/database";
 
+export const dynamic = "force-dynamic";
+
 export default async function EditCampaignPage({
   params,
 }: {
