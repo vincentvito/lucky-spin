@@ -22,8 +22,8 @@ const HERO_BASE_COLOR = "#14B8A6";
 const STICKERS = [
   { text: "Increase Sales", className: "-top-2 -right-4 rotate-3", delay: "0s" },
   { text: "Grow Email List", className: "-top-2 -left-4 -rotate-3", delay: "0.5s" },
-  { text: "Easy to Set Up", className: "-bottom-2 -right-4 rotate-2", delay: "1s" },
-  { text: "Boost Engagement", className: "-bottom-2 -left-4 -rotate-2", delay: "1.5s" },
+  { text: "Easy to Set Up", className: "bottom-20 -right-4 rotate-2", delay: "1s" },
+  { text: "Boost Engagement", className: "bottom-20 -left-4 -rotate-2", delay: "1.5s" },
 ];
 
 function buildHeroSegments(): WheelSegment[] {
