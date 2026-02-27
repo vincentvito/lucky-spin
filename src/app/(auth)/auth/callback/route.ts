@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -11,8 +12,10 @@ export async function GET(request: Request) {
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error && data.user) {
-      // Create business profile if it doesn't exist (for OAuth signups)
-      const { data: existingBusiness } = await supabase
+      // Use admin client to bypass RLS for business profile creation
+      const adminSupabase = createAdminClient();
+
+      const { data: existingBusiness } = await adminSupabase
         .from("businesses")
         .select("id")
         .eq("user_id", data.user.id)
@@ -20,14 +23,21 @@ export async function GET(request: Request) {
 
       if (!existingBusiness) {
         const displayName =
+          data.user.user_metadata?.business_name ||
           data.user.user_metadata?.full_name ||
           data.user.email?.split("@")[0] ||
           "My Business";
 
-        await supabase.from("businesses").insert({
-          user_id: data.user.id,
-          business_name: displayName,
-        });
+        const { error: insertError } = await adminSupabase
+          .from("businesses")
+          .insert({
+            user_id: data.user.id,
+            business_name: displayName,
+          });
+
+        if (insertError && insertError.code !== "23505") {
+          console.error("Failed to create business profile:", insertError);
+        }
       }
 
       return NextResponse.redirect(`${origin}${next}`);

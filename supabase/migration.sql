@@ -183,3 +183,9 @@ ALTER TABLE public.campaigns
 -- STORAGE: Create logos bucket (run in Supabase dashboard or via API)
 -- Note: Create a public bucket named "logos" in Supabase Storage settings
 -- ============================================================
+
+-- ============================================================
+-- UNSUBSCRIBE: Add unsubscribed column to participants
+-- ============================================================
+ALTER TABLE public.participants
+  ADD COLUMN unsubscribed BOOLEAN NOT NULL DEFAULT false;

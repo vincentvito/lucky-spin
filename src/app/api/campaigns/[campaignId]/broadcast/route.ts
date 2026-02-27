@@ -49,11 +49,12 @@ export async function POST(
 
     const { subject, body } = parsed.data;
 
-    // Fetch all participant emails
+    // Fetch all participant emails (exclude unsubscribed)
     const { data: participants } = await supabase
       .from("participants")
       .select("email")
-      .eq("campaign_id", campaignId);
+      .eq("campaign_id", campaignId)
+      .neq("unsubscribed", true);
 
     if (!participants || participants.length === 0) {
       return NextResponse.json(
@@ -71,11 +72,16 @@ export async function POST(
 
     for (let i = 0; i < emails.length; i += BATCH_SIZE) {
       const batch = emails.slice(i, i + BATCH_SIZE);
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://getcontacts.app";
       const messages = batch.map((to) => ({
         from: "LuckyQR <noreply@getcontacts.app>",
         to,
         subject,
-        html: broadcastHtml({ body, campaignName: campaign.name }),
+        html: broadcastHtml({
+          body,
+          campaignName: campaign.name,
+          unsubscribeUrl: `${appUrl}/api/unsubscribe?email=${encodeURIComponent(to)}&campaign=${campaignId}`,
+        }),
       }));
 
       try {
@@ -99,9 +105,11 @@ export async function POST(
 function broadcastHtml({
   body,
   campaignName,
+  unsubscribeUrl,
 }: {
   body: string;
   campaignName: string;
+  unsubscribeUrl: string;
 }) {
   return `<!DOCTYPE html>
 <html>
@@ -115,7 +123,8 @@ function broadcastHtml({
           <div style="font-size:15px;line-height:1.6;color:#18181b">${body}</div>
         </td></tr>
         <tr><td style="padding:0 32px 24px;text-align:center">
-          <p style="margin:0;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0"><a href="${unsubscribeUrl}" style="color:#a1a1aa;font-size:11px;text-decoration:underline">Unsubscribe</a></p>
         </td></tr>
       </table>
     </td></tr>

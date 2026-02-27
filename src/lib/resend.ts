@@ -9,19 +9,24 @@ export async function sendPrizeEmail({
   won,
   prizeName,
   campaignName,
+  campaignId,
 }: {
   email: string;
   won: boolean;
   prizeName: string | null;
   campaignName: string;
+  campaignId: string;
 }) {
   const subject = won
     ? `You won: ${prizeName}!`
     : `Thanks for playing — ${campaignName}`;
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://getcontacts.app";
+  const unsubscribeUrl = `${appUrl}/api/unsubscribe?email=${encodeURIComponent(email)}&campaign=${campaignId}`;
+
   const html = won
-    ? prizeWonHtml({ prizeName: prizeName!, campaignName })
-    : noWinHtml({ campaignName });
+    ? prizeWonHtml({ prizeName: prizeName!, campaignName, unsubscribeUrl })
+    : noWinHtml({ campaignName, unsubscribeUrl });
 
   await resend.emails.send({
     from: FROM_EMAIL,
@@ -34,9 +39,11 @@ export async function sendPrizeEmail({
 function prizeWonHtml({
   prizeName,
   campaignName,
+  unsubscribeUrl,
 }: {
   prizeName: string;
   campaignName: string;
+  unsubscribeUrl: string;
 }) {
   return `<!DOCTYPE html>
 <html>
@@ -55,7 +62,8 @@ function prizeWonHtml({
           <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:16px;margin-bottom:24px">
             <p style="margin:0;color:#92400e;font-size:14px;font-weight:600">Show this email to claim your prize</p>
           </div>
-          <p style="margin:0;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0"><a href="${unsubscribeUrl}" style="color:#a1a1aa;font-size:11px;text-decoration:underline">Unsubscribe</a></p>
         </td></tr>
       </table>
     </td></tr>
@@ -64,7 +72,13 @@ function prizeWonHtml({
 </html>`;
 }
 
-function noWinHtml({ campaignName }: { campaignName: string }) {
+function noWinHtml({
+  campaignName,
+  unsubscribeUrl,
+}: {
+  campaignName: string;
+  unsubscribeUrl: string;
+}) {
   return `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -79,7 +93,8 @@ function noWinHtml({ campaignName }: { campaignName: string }) {
         <tr><td style="padding:32px;text-align:center">
           <p style="margin:0 0 8px;color:#71717a;font-size:14px">${campaignName}</p>
           <p style="margin:0 0 24px;font-size:16px;color:#3f3f46">Better luck next time! We appreciate you participating.</p>
-          <p style="margin:0;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by LuckyQR</p>
+          <p style="margin:0"><a href="${unsubscribeUrl}" style="color:#a1a1aa;font-size:11px;text-decoration:underline">Unsubscribe</a></p>
         </td></tr>
       </table>
     </td></tr>

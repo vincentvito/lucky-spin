@@ -2,10 +2,22 @@ import { createClient } from "@/lib/supabase/server";
 import { determineLotteryOutcome } from "@/lib/lottery";
 import { sendPrizeEmail } from "@/lib/resend";
 import { playSchema } from "@/lib/validators";
+import { rateLimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+      "unknown";
+    const { success } = rateLimit(ip);
+    if (!success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const parsed = playSchema.safeParse(body);
 
@@ -108,6 +120,7 @@ export async function POST(request: Request) {
       won: result.won,
       prizeName: result.prizeName,
       campaignName: campaign.name,
+      campaignId: campaign.id,
     }).catch(console.error);
 
     return NextResponse.json({

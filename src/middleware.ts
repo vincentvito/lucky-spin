@@ -55,7 +55,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // Redirect authenticated users away from auth pages and landing page
-  const authPaths = ["/login", "/signup", "/forgot-password", "/auth/reset-password"];
+  const authPaths = ["/login", "/signup"];
   const isAuthPage = authPaths.includes(request.nextUrl.pathname);
   const isLandingPage = request.nextUrl.pathname === "/";
 
@@ -76,7 +76,5 @@ export const config = {
     "/settings/:path*",
     "/login",
     "/signup",
-    "/forgot-password",
-    "/auth/reset-password",
   ],
 };

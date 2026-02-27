@@ -44,6 +44,7 @@ export interface Participant {
   email: string;
   prize_id: string | null;
   played_at: string;
+  unsubscribed: boolean;
 }
 
 export interface CampaignWithPrizes extends Campaign {
