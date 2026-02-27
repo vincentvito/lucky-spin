@@ -17,8 +17,8 @@ const DEMO_PRIZES = [
   { name: "Free Drink" },
 ];
 
-const DEMO_BASE_COLOR = "#7C3AED";
-const DEMO_BG_COLOR = "#1A0E2E";
+const DEMO_BASE_COLOR = "#14B8A6";
+const DEMO_BG_COLOR = "#0A1E1E";
 
 function buildSegments(): WheelSegment[] {
   const palette = generateMonochromaticPalette(DEMO_BASE_COLOR, DEMO_PRIZES.length);
@@ -99,7 +99,7 @@ export default function DemoPage() {
       style={{ background: generateBgGradient(DEMO_BG_COLOR) }}
     >
       {/* Demo banner */}
-      <div className="mb-4 rounded-full bg-purple-500/20 px-4 py-1 text-sm text-purple-300">
+      <div className="mb-4 rounded-full bg-teal-500/20 px-4 py-1 text-sm text-teal-300">
         Demo Mode — No database required
       </div>
 
@@ -137,7 +137,7 @@ export default function DemoPage() {
             <Button
               type="submit"
               className="h-12 w-full text-lg"
-              style={{ backgroundColor: "#7C3AED" }}
+              style={{ backgroundColor: "#14B8A6" }}
             >
               Spin the Wheel!
             </Button>
@@ -147,7 +147,7 @@ export default function DemoPage() {
 
       {/* Spinning */}
       {state === "spinning" && (
-        <p className="animate-pulse text-center text-lg text-purple-300">
+        <p className="animate-pulse text-center text-lg text-teal-300">
           Good luck!
         </p>
       )}
@@ -157,8 +157,8 @@ export default function DemoPage() {
         <div className="w-full max-w-sm text-center">
           {won ? (
             <>
-              <PartyPopper className="mx-auto mb-3 h-12 w-12 text-purple-300" />
-              <h2 className="text-3xl font-bold text-purple-300">You Won!</h2>
+              <PartyPopper className="mx-auto mb-3 h-12 w-12 text-teal-300" />
+              <h2 className="text-3xl font-bold text-teal-300">You Won!</h2>
               <p className="mt-2 text-xl text-white">{prizeName}</p>
               <p className="mt-4 text-sm text-gray-400">
                 Show this screen to claim your prize!

@@ -21,14 +21,14 @@ import type { CampaignWithPrizes } from "@/types/database";
 import { generateMonochromaticPalette } from "@/lib/color-utils";
 
 const DEFAULT_PRIZE_COLORS = [
-  "#4C1D95",
-  "#7C3AED",
-  "#8B5CF6",
-  "#A78BFA",
-  "#5B21B6",
-  "#C4B5FD",
-  "#6D28D9",
-  "#9333EA",
+  "#14B8A6",
+  "#0D9488",
+  "#0F766E",
+  "#115E59",
+  "#06B6D4",
+  "#0891B2",
+  "#10B981",
+  "#059669",
 ];
 
 interface CampaignFormProps {
@@ -55,14 +55,14 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
     campaign?.board_text_color || "#000000"
   );
   const [boardAccentColor, setBoardAccentColor] = useState(
-    campaign?.board_accent_color || "#7C3AED"
+    campaign?.board_accent_color || "#14B8A6"
   );
 
   const [colorMode, setColorMode] = useState<"auto" | "manual">(
     campaign?.wheel_base_color ? "auto" : "manual"
   );
   const [wheelBaseColor, setWheelBaseColor] = useState(
-    campaign?.wheel_base_color || "#7C3AED"
+    campaign?.wheel_base_color || "#14B8A6"
   );
   const [playBgColor, setPlayBgColor] = useState(
     campaign?.play_bg_color || "#111827"

@@ -52,15 +52,15 @@ function prizeWonHtml({
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px">
     <tr><td align="center">
       <table width="100%" style="max-width:480px;background:#ffffff;border-radius:12px;overflow:hidden">
-        <tr><td style="background:linear-gradient(135deg,#7C3AED,#A78BFA);padding:32px;text-align:center">
+        <tr><td style="background:linear-gradient(135deg,#0D9488,#14B8A6);padding:32px;text-align:center">
           <div style="font-size:48px;margin-bottom:8px">&#127881;</div>
           <h1 style="margin:0;color:#ffffff;font-size:24px">You Won!</h1>
         </td></tr>
         <tr><td style="padding:32px;text-align:center">
           <p style="margin:0 0 8px;color:#71717a;font-size:14px">${campaignName}</p>
           <p style="margin:0 0 24px;font-size:22px;font-weight:700;color:#18181b">${prizeName}</p>
-          <div style="background:#EDE9FE;border:1px solid #DDD6FE;border-radius:8px;padding:16px;margin-bottom:24px">
-            <p style="margin:0;color:#4C1D95;font-size:14px;font-weight:600">Show this email to claim your prize</p>
+          <div style="background:#F0FDFA;border:1px solid #99F6E4;border-radius:8px;padding:16px;margin-bottom:24px">
+            <p style="margin:0;color:#115E59;font-size:14px;font-weight:600">Show this email to claim your prize</p>
           </div>
           <p style="margin:0 0 8px;color:#a1a1aa;font-size:12px">Powered by GetContactsApp</p>
           <p style="margin:0"><a href="${unsubscribeUrl}" style="color:#a1a1aa;font-size:11px;text-decoration:underline">Unsubscribe</a></p>
@@ -86,7 +86,7 @@ function noWinHtml({
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px">
     <tr><td align="center">
       <table width="100%" style="max-width:480px;background:#ffffff;border-radius:12px;overflow:hidden">
-        <tr><td style="background:linear-gradient(135deg,#5B21B6,#8B5CF6);padding:32px;text-align:center">
+        <tr><td style="background:linear-gradient(135deg,#115E59,#14B8A6);padding:32px;text-align:center">
           <div style="font-size:48px;margin-bottom:8px">&#127922;</div>
           <h1 style="margin:0;color:#ffffff;font-size:24px">Thanks for Playing!</h1>
         </td></tr>
@@ -147,7 +147,7 @@ function demoResultHtml({
 
   const resultText = won
     ? `<p style="margin:0 0 4px;font-size:14px;color:#71717a">Your demo prize:</p>
-       <p style="margin:0 0 20px;font-size:24px;font-weight:700;color:#7C3AED">${prizeName}</p>`
+       <p style="margin:0 0 20px;font-size:24px;font-weight:700;color:#0D9488">${prizeName}</p>`
     : `<p style="margin:0 0 20px;font-size:16px;color:#3f3f46">Better luck next time! But here&rsquo;s the real win&hellip;</p>`;
 
   const demoDisclaimer = won
@@ -160,10 +160,10 @@ function demoResultHtml({
 <body style="margin:0;padding:0;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 20px">
     <tr><td align="center">
-      <table width="100%" style="max-width:480px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(124,58,237,0.10)">
+      <table width="100%" style="max-width:480px;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(20,184,166,0.10)">
 
         <!-- Header -->
-        <tr><td style="background:linear-gradient(135deg,#7C3AED 0%,#A78BFA 50%,#C4B5FD 100%);padding:40px 32px;text-align:center">
+        <tr><td style="background:linear-gradient(135deg,#0D9488 0%,#14B8A6 50%,#5EEAD4 100%);padding:40px 32px;text-align:center">
           <div style="font-size:56px;margin-bottom:12px">${headerEmoji}</div>
           <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:700;letter-spacing:-0.5px">${headerTitle}</h1>
         </td></tr>
@@ -193,29 +193,29 @@ function demoResultHtml({
           <table width="100%" cellpadding="0" cellspacing="0">
             <tr>
               <td style="padding:6px 4px" width="50%">
-                <div style="background:#F5F3FF;border-radius:8px;padding:14px 12px;text-align:center">
+                <div style="background:#F0FDFA;border-radius:8px;padding:14px 12px;text-align:center">
                   <div style="font-size:22px;margin-bottom:4px">&#128241;</div>
-                  <p style="margin:0;font-size:12px;font-weight:600;color:#5B21B6">QR Code Campaigns</p>
+                  <p style="margin:0;font-size:12px;font-weight:600;color:#115E59">QR Code Campaigns</p>
                 </div>
               </td>
               <td style="padding:6px 4px" width="50%">
-                <div style="background:#F5F3FF;border-radius:8px;padding:14px 12px;text-align:center">
+                <div style="background:#F0FDFA;border-radius:8px;padding:14px 12px;text-align:center">
                   <div style="font-size:22px;margin-bottom:4px">&#127918;</div>
-                  <p style="margin:0;font-size:12px;font-weight:600;color:#5B21B6">Gamified Spin Wheel</p>
+                  <p style="margin:0;font-size:12px;font-weight:600;color:#115E59">Gamified Spin Wheel</p>
                 </div>
               </td>
             </tr>
             <tr>
               <td style="padding:6px 4px" width="50%">
-                <div style="background:#F5F3FF;border-radius:8px;padding:14px 12px;text-align:center">
+                <div style="background:#F0FDFA;border-radius:8px;padding:14px 12px;text-align:center">
                   <div style="font-size:22px;margin-bottom:4px">&#128231;</div>
-                  <p style="margin:0;font-size:12px;font-weight:600;color:#5B21B6">Auto Email Collection</p>
+                  <p style="margin:0;font-size:12px;font-weight:600;color:#115E59">Auto Email Collection</p>
                 </div>
               </td>
               <td style="padding:6px 4px" width="50%">
-                <div style="background:#F5F3FF;border-radius:8px;padding:14px 12px;text-align:center">
+                <div style="background:#F0FDFA;border-radius:8px;padding:14px 12px;text-align:center">
                   <div style="font-size:22px;margin-bottom:4px">&#128200;</div>
-                  <p style="margin:0;font-size:12px;font-weight:600;color:#5B21B6">CSV Export &amp; Analytics</p>
+                  <p style="margin:0;font-size:12px;font-weight:600;color:#115E59">CSV Export &amp; Analytics</p>
                 </div>
               </td>
             </tr>
@@ -224,7 +224,7 @@ function demoResultHtml({
 
         <!-- CTA -->
         <tr><td style="padding:0 32px 32px;text-align:center">
-          <a href="${signupUrl}" style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;padding:14px 40px;border-radius:8px;letter-spacing:0.3px">
+          <a href="${signupUrl}" style="display:inline-block;background:linear-gradient(135deg,#14B8A6,#0D9488);color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;padding:14px 40px;border-radius:8px;letter-spacing:0.3px">
             Create Your First Campaign
           </a>
           <p style="margin:12px 0 0;font-size:13px;color:#a1a1aa">Free to get started. No credit card required.</p>

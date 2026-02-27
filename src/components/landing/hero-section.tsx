@@ -17,15 +17,13 @@ const HERO_PRIZES = [
   { name: "VIP Access" },
 ];
 
-const HERO_BASE_COLOR = "#7C3AED";
+const HERO_BASE_COLOR = "#14B8A6";
 
 const STICKERS = [
-  { text: "Increase Sales", className: "-top-3 -right-6 rotate-6", delay: "0s" },
-  { text: "Gamify Contacts", className: "top-1/3 -right-14 -rotate-3", delay: "0.5s" },
-  { text: "Grow Email List", className: "-bottom-1 -right-4 rotate-3", delay: "1s" },
-  { text: "Boost Engagement", className: "-top-3 -left-6 -rotate-6", delay: "1.5s" },
-  { text: "Fun for Customers", className: "top-1/3 -left-14 rotate-3", delay: "0.7s" },
-  { text: "Easy to Set Up", className: "-bottom-1 -left-6 -rotate-2", delay: "1.2s" },
+  { text: "Increase Sales", className: "-top-2 -right-4 rotate-3", delay: "0s" },
+  { text: "Grow Email List", className: "-top-2 -left-4 -rotate-3", delay: "0.5s" },
+  { text: "Easy to Set Up", className: "-bottom-2 -right-4 rotate-2", delay: "1s" },
+  { text: "Boost Engagement", className: "-bottom-2 -left-4 -rotate-2", delay: "1.5s" },
 ];
 
 function buildHeroSegments(): WheelSegment[] {

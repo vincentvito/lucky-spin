@@ -91,7 +91,7 @@ export function SpinningWheel({
       ctx.lineTo(centerX + 14, 4);
       ctx.lineTo(centerX, 28);
       ctx.closePath();
-      ctx.fillStyle = "#7C3AED";
+      ctx.fillStyle = "#14B8A6";
       ctx.fill();
       ctx.strokeStyle = "#FFFFFF";
       ctx.lineWidth = 2;

@@ -35,7 +35,7 @@ export const campaignSchema = z
     board_accent_color: z
       .string()
       .regex(/^#[0-9A-Fa-f]{6}$/)
-      .default("#7C3AED"),
+      .default("#14B8A6"),
     wheel_base_color: z
       .string()
       .regex(/^#[0-9A-Fa-f]{6}$/)
