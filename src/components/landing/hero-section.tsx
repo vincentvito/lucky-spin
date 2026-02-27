@@ -65,24 +65,33 @@ export function HeroSection() {
       return;
     }
 
-    // Store the lead (fire-and-forget)
-    fetch("/api/landing-lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email.trim() }),
-    }).catch(() => {});
-
     // Client-side spin simulation (50% win rate)
     const random = Math.random();
+    let won = false;
+    let selectedPrizeName: string | null = null;
+
     if (random < 0.5) {
       const prizeIndex = Math.floor(Math.random() * HERO_PRIZES.length);
-      setResultMessage(HERO_PRIZES[prizeIndex].name);
+      won = true;
+      selectedPrizeName = HERO_PRIZES[prizeIndex].name;
+      setResultMessage(selectedPrizeName);
       setTargetSegment(prizeIndex * 2);
     } else {
       setResultMessage(null);
       const noWinIndex = Math.floor(Math.random() * HERO_PRIZES.length);
       setTargetSegment(noWinIndex * 2 + 1);
     }
+
+    // Store the lead + trigger demo email (fire-and-forget)
+    fetch("/api/landing-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: email.trim(),
+        won,
+        prizeName: selectedPrizeName,
+      }),
+    }).catch(() => {});
 
     setSpinning(true);
     setPlayState("spinning");

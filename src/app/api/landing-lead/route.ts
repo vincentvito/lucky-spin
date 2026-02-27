@@ -1,10 +1,13 @@
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendDemoResultEmail } from "@/lib/resend";
 import { rateLimit } from "@/lib/rate-limit";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const schema = z.object({
   email: z.string().email(),
+  won: z.boolean().optional(),
+  prizeName: z.string().nullable().optional(),
 });
 
 export async function POST(request: Request) {
@@ -33,6 +36,15 @@ export async function POST(request: Request) {
     await supabase
       .from("landing_leads")
       .upsert({ email: normalizedEmail }, { onConflict: "email" });
+
+    // Send demo result email if spin data is provided
+    if (parsed.data.won !== undefined) {
+      sendDemoResultEmail({
+        email: normalizedEmail,
+        won: parsed.data.won,
+        prizeName: parsed.data.prizeName ?? null,
+      }).catch((err) => console.error("Demo email error:", err));
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
