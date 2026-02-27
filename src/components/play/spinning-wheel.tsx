@@ -108,7 +108,7 @@ export function SpinningWheel({
     // Target angle: we want the target segment's center to be at the top (pointer position)
     const targetAngle = -(targetSegmentIndex * arcSize + arcSize / 2);
     // Add extra full rotations for dramatic effect
-    const extraRotations = (5 + Math.random() * 3) * 2 * Math.PI;
+    const extraRotations = (5 + Math.floor(Math.random() * 4)) * 2 * Math.PI;
     const totalRotation = targetAngle + extraRotations - angleRef.current;
 
     const duration = 4500;

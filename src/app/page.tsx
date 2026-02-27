@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { QrCode, Mail, Gift, Download } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
+import { HeroSection } from "@/components/landing/hero-section";
 
 export const dynamic = "force-dynamic";
 
@@ -37,25 +38,7 @@ export default async function HomePage() {
 
       {/* Hero */}
       <main className="flex-1">
-        <section className="mx-auto max-w-6xl px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            Collect Emails with a
-            <span className="text-primary"> Fun Spin-to-Win</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            Generate QR codes for your cafe or restaurant. Customers scan, enter
-            their email, and spin a wheel for a chance to win prizes. You grow
-            your mailing list effortlessly.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <Button size="lg" asChild>
-              <Link href="/signup">Start Free</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="/login">Sign In</Link>
-            </Button>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* Features */}
         <section className="border-t bg-muted/30 py-20">

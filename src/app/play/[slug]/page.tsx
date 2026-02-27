@@ -258,7 +258,8 @@ export default function PlayPage() {
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 bg-white/10 text-white placeholder:text-gray-400 border-white/20 text-center text-lg"
+              className="h-12 bg-white/10 text-white placeholder:text-gray-400 border-white/20 text-center text-lg caret-white"
+              style={{ colorScheme: "dark" }}
               disabled={submitting}
             />
             {emailError && (
