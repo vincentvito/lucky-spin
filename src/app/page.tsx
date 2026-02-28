@@ -73,7 +73,7 @@ export default async function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/30 py-12">
+      <footer className="border-t bg-muted py-12 transition-colors">
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-8 md:grid-cols-3">
             {/* Brand */}
