@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Plus, Trash2 } from "lucide-react";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 import { toast } from "sonner";
 import type { CampaignFormData, PrizeFormData } from "@/lib/validators";
 import type { CampaignWithPrizes } from "@/types/database";
@@ -206,7 +207,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
                 />
               </div>
               <div className="w-28 space-y-2">
-                <Label>Win %</Label>
+                <Label>Win % <InfoTooltip text="Chance of winning this prize on each spin" /></Label>
                 <Input
                   type="number"
                   min="1"
@@ -220,7 +221,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
                 />
               </div>
               <div className="w-24 space-y-2">
-                <Label>Quantity</Label>
+                <Label>Quantity <InfoTooltip text="Max times this prize can be awarded. Leave empty for unlimited" /></Label>
                 <Input
                   type="number"
                   min="1"
@@ -283,7 +284,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
         <CardContent className="space-y-4">
           {/* Wheel color mode */}
           <div className="space-y-2">
-            <Label>Wheel Colors</Label>
+            <Label>Wheel Colors <InfoTooltip text="Auto generates a matching palette from one base color. Manual lets you pick each prize's color" /></Label>
             <div className="flex gap-2">
               <Button
                 type="button"
@@ -341,7 +342,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
 
           {/* Page background */}
           <div className="space-y-2">
-            <Label>Page Background</Label>
+            <Label>Page Background <InfoTooltip text="Background color of the page players see when spinning the wheel" /></Label>
             <div className="flex items-center gap-2">
               <Input
                 type="color"
@@ -365,7 +366,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="boardHeadline">Headline</Label>
+            <Label htmlFor="boardHeadline">Headline <InfoTooltip text="Main text shown on your printed QR poster" /></Label>
             <Input
               id="boardHeadline"
               value={boardHeadline}
@@ -374,7 +375,7 @@ export function CampaignForm({ campaign, onSubmit }: CampaignFormProps) {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="boardSubheadline">Subheadline</Label>
+            <Label htmlFor="boardSubheadline">Subheadline <InfoTooltip text="Secondary text below the headline on your poster" /></Label>
             <Input
               id="boardSubheadline"
               value={boardSubheadline}

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Megaphone, Users, Trophy, Plus } from "lucide-react";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,12 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Campaigns</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              <span className="flex items-center gap-1">
+                Campaigns
+                <InfoTooltip text="Total number of lottery campaigns you've created" />
+              </span>
+            </CardTitle>
             <Megaphone className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -92,7 +98,10 @@ export default async function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium">
-              Total Participants
+              <span className="flex items-center gap-1">
+                Total Participants
+                <InfoTooltip text="Everyone who scanned your QR code and spun the wheel" />
+              </span>
             </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -102,7 +111,12 @@ export default async function DashboardPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Winners</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              <span className="flex items-center gap-1">
+                Total Winners
+                <InfoTooltip text="Participants who won a prize across all campaigns" />
+              </span>
+            </CardTitle>
             <Trophy className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>

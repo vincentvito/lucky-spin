@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { toast } from "sonner";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 
 export default function SettingsPage() {
   const [businessName, setBusinessName] = useState("");
@@ -145,7 +146,7 @@ export default function SettingsPage() {
         <CardContent>
           <form onSubmit={handleSave} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="businessName">Business Name</Label>
+              <Label htmlFor="businessName">Business Name <InfoTooltip text="Shown on your printed QR boards and in emails to participants" /></Label>
               <Input
                 id="businessName"
                 value={businessName}
@@ -156,7 +157,7 @@ export default function SettingsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="logo">Logo</Label>
+              <Label htmlFor="logo">Logo <InfoTooltip text="Displayed on your printed QR boards" /></Label>
               {logoUrl && (
                 <div className="mb-2">
                   <img

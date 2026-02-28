@@ -20,6 +20,7 @@ import {
   FileImage,
   Send,
 } from "lucide-react";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 
 export const dynamic = "force-dynamic";
 
@@ -90,7 +91,12 @@ export default async function CampaignDetailPage({
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Participants</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              <span className="flex items-center gap-1">
+                Participants
+                <InfoTooltip text="People who played this campaign's wheel" />
+              </span>
+            </CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -99,7 +105,12 @@ export default async function CampaignDetailPage({
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Winners</CardTitle>
+            <CardTitle className="text-sm font-medium">
+              <span className="flex items-center gap-1">
+                Winners
+                <InfoTooltip text="Participants who won a prize in this campaign" />
+              </span>
+            </CardTitle>
             <Trophy className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -160,25 +171,34 @@ export default async function CampaignDetailPage({
       </Card>
 
       {/* Quick links */}
-      <div className="flex gap-3">
-        <Button variant="outline" asChild>
-          <Link href={`/campaigns/${campaignId}/emails`}>
-            <Mail className="mr-2 h-4 w-4" />
-            View Emails
-          </Link>
-        </Button>
-        <Button variant="outline" asChild>
-          <Link href={`/campaigns/${campaignId}/board`}>
-            <FileImage className="mr-2 h-4 w-4" />
-            Printable Board
-          </Link>
-        </Button>
-        <Button variant="outline" asChild>
-          <Link href={`/campaigns/${campaignId}/broadcast`}>
-            <Send className="mr-2 h-4 w-4" />
-            Send Broadcast
-          </Link>
-        </Button>
+      <div className="flex flex-wrap gap-3">
+        <div className="flex items-center gap-1">
+          <Button variant="outline" asChild>
+            <Link href={`/campaigns/${campaignId}/emails`}>
+              <Mail className="mr-2 h-4 w-4" />
+              View Emails
+            </Link>
+          </Button>
+          <InfoTooltip text="See and export collected participant emails as CSV" />
+        </div>
+        <div className="flex items-center gap-1">
+          <Button variant="outline" asChild>
+            <Link href={`/campaigns/${campaignId}/board`}>
+              <FileImage className="mr-2 h-4 w-4" />
+              Printable Board
+            </Link>
+          </Button>
+          <InfoTooltip text="Download an A4 poster with your QR code to print and display" />
+        </div>
+        <div className="flex items-center gap-1">
+          <Button variant="outline" asChild>
+            <Link href={`/campaigns/${campaignId}/broadcast`}>
+              <Send className="mr-2 h-4 w-4" />
+              Send Broadcast
+            </Link>
+          </Button>
+          <InfoTooltip text="Send a bulk email to every campaign participant" />
+        </div>
       </div>
     </div>
   );

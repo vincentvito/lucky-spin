@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowLeft, Send } from "lucide-react";
+import { InfoTooltip } from "@/components/ui/info-tooltip";
 import { toast } from "sonner";
 
 export default function BroadcastPage({
@@ -128,7 +129,7 @@ export default function BroadcastPage({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="body">Message (HTML supported)</Label>
+                <Label htmlFor="body">Message (HTML supported) <InfoTooltip text="You can use HTML tags like <b>, <a>, <p> for formatting" /></Label>
                 <Textarea
                   id="body"
                   placeholder="Write your message here..."
