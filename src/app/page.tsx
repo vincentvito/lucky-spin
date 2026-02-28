@@ -73,8 +73,76 @@ export default async function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t py-8 text-center text-sm text-muted-foreground">
-        <p>GetContactsApp — Grow your mailing list with gamified QR campaigns.</p>
+      <footer className="border-t bg-muted/30 py-12">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Brand */}
+            <div>
+              <div className="mb-3 flex items-center gap-2 font-bold text-lg">
+                <Gift className="h-5 w-5 text-primary" />
+                GetContactsApp
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Grow your mailing list with gamified QR campaigns.
+              </p>
+            </div>
+
+            {/* Product & Account */}
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <h4 className="mb-3 font-semibold text-sm">Product</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="#how-it-works" className="text-muted-foreground transition-colors hover:text-foreground">
+                      How It Works
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/demo" className="text-muted-foreground transition-colors hover:text-foreground">
+                      Demo
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="mb-3 font-semibold text-sm">Account</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <Link href="/login" className="text-muted-foreground transition-colors hover:text-foreground">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/signup" className="text-muted-foreground transition-colors hover:text-foreground">
+                      Sign Up
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="mb-3 font-semibold text-sm">Legal</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="#" className="text-muted-foreground transition-colors hover:text-foreground">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#" className="text-muted-foreground transition-colors hover:text-foreground">
+                    Terms of Service
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} GetContactsApp. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );
